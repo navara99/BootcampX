@@ -3,7 +3,7 @@ CREATE TABLE teachers (
   name VARCHAR(255) NOT NULL,
   is_active BOOLEAN DEFAULT TRUE,
   start_date DATE,
-  end_date DATE,
+  end_date DATE
 );
 
 CREATE TABLE assistance_requests (
