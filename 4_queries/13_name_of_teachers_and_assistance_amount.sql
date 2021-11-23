@@ -5,4 +5,4 @@ FROM assistance_requests
   JOIN cohorts ON students.cohort_id = cohorts.id
 WHERE cohorts.name = 'JUL02'
 GROUP BY teachers.id, cohorts.id
-ORDER BY teachers.name;
+ORDER BY teacher;
