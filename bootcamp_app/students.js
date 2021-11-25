@@ -9,14 +9,15 @@ const config = {
 
 const pool = new Pool(config);
 
-const [month, limit] = process.argv.slice(2);
+const [cohort, limit] = process.argv.slice(2);
+const values = [`%${cohort}%`, limit];
 
 pool.query(`
 SELECT students.id, students.name, cohorts.name as cohort
 FROM students JOIN cohorts ON cohort_id = cohorts.id
-WHERE cohorts.name LIKE '%${month}%'
-LIMIT ${limit};
-`)
+WHERE cohorts.name LIKE $1
+LIMIT $2;
+`, values)
   .then(res => {
     res.rows.forEach((student) => {
       const { name, id, cohort } = student;
